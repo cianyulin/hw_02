@@ -74,14 +74,57 @@ def add_order(orders: list) -> str:
     })
 
     return f"=> 訂單 {order_id} 已新增！"
+def count_chinese_chars(text):
+    """計算中文字數（不含英數字）"""
+    return sum(1 for ch in text if '\u4e00' <= ch <= '\u9fff')
+def print_order_report(data: list, title="訂單報表", single=False):
+    """print_order_report(data, title="訂單報表", single=False)：
+    顯示訂單報表，可顯示單筆訂單或多筆訂單。
+    參數 single 指定是否為單筆訂單。"""
+    if single:
+        print(f"\n==================== 出餐訂單 ====================")
+    else:
+        print(f"\n==================== {title} ====================")
+
+    for idx, order in enumerate(data, 1):
+        if not single:
+            print(f"訂單 #{idx}")
+        print(f"訂單編號: {order['order_id']}")
+        print(f"客戶姓名: {order['customer']}")
+        print("--------------------------------------------------")
+        # 使用F字串來對齊
+        print(f"{'商品名稱'}\t{'單價'}\t{'數量'}\t{'小計'}")
+        print("--------------------------------------------------")
+        total = 0
+        for item in order["items"]:
+            name = item["name"]
+            name_display = name  # 不要直接改 item['name']，用一個新變數
+
+            chinese_len = count_chinese_chars(name)
+            if chinese_len == 1:
+                name_display += ' ' * 6
+            elif chinese_len == 2:
+                name_display += ' ' * 4
+            elif chinese_len == 3:
+                name_display += ' ' * 2
+            # 四個以上就不加空格
+
+            subtotal = item["price"] * item["quantity"]
+            print(f"{name_display}\t{item['price']}\t{item['quantity']}\t{subtotal}")
+            total += subtotal
+        print("--------------------------------------------------")
+        print(f"訂單總額: {total:,}")
+        print("--------------------------------------------------")
+
 
 """測試新增訂單的功能"""
 def main():
-    orders = load_data(INPUT_FILE)
-    result = add_order(orders)
-    print(result)
-    if "已新增" in result:
-        save_orders(INPUT_FILE, orders)
+    #orders = load_data(INPUT_FILE)
+    #result = add_order(orders)
+    #print(result)
+    #if "已新增" in result:
+    #    save_orders(INPUT_FILE, orders)
+    print_order_report(orders)
 
 if __name__ == "__main__":
     main()
