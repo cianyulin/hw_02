@@ -1,37 +1,5 @@
 [
     {
-        "order_id": "O001",
-        "customer": "張小明",
-        "items": [
-            {
-                "name": "牛肉麵",
-                "price": 120,
-                "quantity": 2
-            },
-            {
-                "name": "滷蛋",
-                "price": 15,
-                "quantity": 2
-            }
-        ]
-    },
-    {
-        "order_id": "O002",
-        "customer": "李小華",
-        "items": [
-            {
-                "name": "雞腿飯",
-                "price": 80,
-                "quantity": 1
-            },
-            {
-                "name": "味噌湯",
-                "price": 20,
-                "quantity": 1
-            }
-        ]
-    },
-    {
         "order_id": "O003",
         "customer": "林小妤",
         "items": [
@@ -55,6 +23,38 @@
                 "name": "烤香腸",
                 "price": 20,
                 "quantity": 4
+            }
+        ]
+    },
+    {
+        "order_id": "O005",
+        "customer": "丁誠心",
+        "items": [
+            {
+                "name": "辣條",
+                "price": 10,
+                "quantity": 100
+            }
+        ]
+    },
+    {
+        "order_id": "O006",
+        "customer": "林芊妤",
+        "items": [
+            {
+                "name": "不知道",
+                "price": 100,
+                "quantity": 20
+            },
+            {
+                "name": "最後一次",
+                "price": 20,
+                "quantity": 1
+            },
+            {
+                "name": "測試",
+                "price": 30,
+                "quantity": 5
             }
         ]
     }
